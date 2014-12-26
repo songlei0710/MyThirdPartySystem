@@ -23,37 +23,78 @@
     <link rel="stylesheet" href="css/main-2.1.css">
     <link rel="stylesheet" href="css/themes-2.1.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-
 </head>
-<body class="loginpage">
-<div class="loginpanel">
-    <div class="loginpanelinner">
-        <div class="logo animate0 bounceIn">
-            <img src="images/logo.png" alt="" />
+<body><div id="login-container">
+    <h1 class="h2 text-light text-center push-top-bottom animation-slideDown">
+        <i class="fa fa-cube"></i> <strong>哈尔滨职业技术学院<br/>第三方评价系统</strong>
+    </h1>
+    <div class="block animation-fadeInQuickInv">
+        <div class="block-title">
+            <div class="block-options pull-right">
+                <a href="#" class="btn btn-effect-ripple btn-primary" data-toggle="tooltip" data-placement="left" title="忘记密码？">
+                    <i class="fa fa-exclamation-circle"></i></a>
+                <a href="#" class="btn btn-effect-ripple btn-primary" data-toggle="tooltip" data-placement="left" title="注册新用户">
+                    <i class="fa fa-plus"></i></a>
+            </div>
+            <h2>请登录</h2>
         </div>
-        <form id="login">
-            <div class="inputwrapper animate1 bounceIn">
-                用户名：<input type="text" name="username" id="username"/>
+        <form id="form-login" action="" method="post" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <input type="text" id="login-email" name="login-email" class="form-control" placeholder="用户名或邮箱..">
+                </div>
             </div>
-            <div class="inputwrapper animate2 bounceIn">
-                密&nbsp;&nbsp;码：<input type="password" name="password" id="password"/>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <input type="password" id="login-password" name="login-password" class="form-control" placeholder="密码..">
+                </div>
             </div>
-            <div class="inputwrapper animate3 bounceIn">
-                <button name="submit"  id="btnLogin">登录</button>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <label class="csscheckbox csscheckbox-primary">
+                        <input type="radio" id="admin-choose" name="choose"  checked="checked" value="1"/>
+                        <span></span>
+                    </label>
+                    管理员
+                    <label class="csscheckbox csscheckbox-primary">
+                        <input type="radio" id="jz-choose" name="choose" value="2"/>
+                        <span></span>
+                    </label>
+                    家长
+                    <label class="csscheckbox csscheckbox-primary">
+                        <input type="radio" id="qy-choose" name="choose" value="3"/>
+                        <span></span>
+                    </label>
+                    企业
+                    <label class="csscheckbox csscheckbox-primary">
+                        <input type="radio" id="hy-choose" name="choose" value="4"/>
+                        <span></span>
+                    </label>
+                    行业
+                </div>
             </div>
-            <div class="inputwrapper animate4 bounceIn">
-                &nbsp;<label style="font-size:14px"><input type="radio" class="remember" name="signin" id="rdo1" value="1" />管理员</label>
-                &nbsp;<label style="font-size:14px"><input type="radio" class="remember" name="signin" id="rdo2" value="2" checked="checked"/>单位</label>
-                &nbsp;<label style="font-size:14px"><input type="radio" class="remember" name="signin" id="rdo3" value="3"/>家长</label>
-                &nbsp;<label style="font-size:14px"><input type="radio" class="remember" name="signin" id="rdo4" value="4"/>行业</label>
+            <div class="form-group form-actions">
+                <div class="col-xs-8">
+                    <label class="csscheckbox csscheckbox-primary">
+                        <input type="checkbox" id="login-remember-me" name="login-remember-me">
+                        <span></span>
+                    </label>
+                    记住我?
+                </div>
+                <div class="col-xs-4 text-right">
+                    <button type="submit" class="btn btn-effect-ripple btn-sm btn-primary" id="loginButton"><i class="fa fa-check"></i>登录</button>
+                </div>
             </div>
         </form>
     </div>
+    <footer class="text-muted text-center animation-pullUp">
+        <small><span id="year-copy"></span> &copy; <a href="http://www.hzjxy.net" target="_blank">哈尔滨职业技术学院电子与信息工程学院</a></small>
+    </footer>
 </div>
-
-<div class="loginfooter">
-    <p>&copy; 哈尔滨职业技术学院</p>
-</div>
-<script type="text/javascript" src="js/login.js"></script>
+<script src="js/vendor/jquery-2.1.1.min.js"></script>
+<script src="js/vendor/bootstrap.min-2.1.js"></script>
+<script src="js/plugins-2.1.js"></script>
+<script src="js/pages/readyLogin.js"></script>
+<script>$(function(){ ReadyLogin.init(); });</script>
 </body>
 </html>
