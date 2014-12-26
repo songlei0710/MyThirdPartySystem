@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.hzjxy.thirdparty.dao.AdminDao">
+        <insert id="addAdmin">
+                INSERT INTO Admin(Username,Password,IsSuper) VALUES(#{username},#{password},#{isSuper})
+        </insert>
+        <update id="updateAdmin">
+                UPDATE Admin SET IsSuper=#{isSuper},password=#{password} WHERE username=#{username}
+        </update>
+        <update id="updateAdminSuper">
+                UPDATE Admin SET IsSuper=#{isSuper} WHERE username=#{username}
+        </update>
+        <update id="updateAdminPassword">
+                UPDATE Admin SET password=#{password} WHERE username=#{username}
+        </update>
+        <delete id="delAdmin">
+                DELETE Admin WHERE username=#{username}
+        </delete>
+        <select id="getAdminByUsername" resultType="net.hzjxy.thirdparty.entity.Admin">
+                SELECT * FROM Admin WHERE Username=#{username}
+        </select>
+        <select id="getAllAdmins" resultType="net.hzjxy.thirdparty.entity.Admin">
+                SELECT Top #{pageSize} * FROM Admin WHRER Username not in (SELECT TOP (#{currentPageIndex}-1)*#{pageSize} Username From Admin)
+        </select>
+        <select id="getAdminsBySuper" resultType="net.hzjxy.thirdparty.entity.Admin">
+             SELECT Top #{pageSize} * FROM Admin WHRER Username not in (SELECT TOP (#{currentPageIndex}-1)*#{pageSize} Username From Admin WHERE IsSuper=#{isSuper}) and IsSuper=#{isSuper}
+        </select>
+</mapper>
